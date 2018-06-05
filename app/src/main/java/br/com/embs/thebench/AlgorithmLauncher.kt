@@ -22,7 +22,8 @@ class AlgorithmLauncher : AppCompatActivity() {
                 radioButtonAlgorithm1.id -> Algorithm.ALGORITHM1
                 else -> Algorithm.ALGORITHM2
             }
-            val runnerListener = ToasterRunnerListener(this, selectedAlgorithm)
+            //val runnerListener = ToasterRunnerListener(this, selectedAlgorithm)
+            val runnerListener = DeafRunnerListener()
             RunnerFactory().create(selectedAlgorithm, runnerListener).run()
         }
     }
