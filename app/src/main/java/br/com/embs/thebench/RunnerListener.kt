@@ -11,7 +11,7 @@ interface RunnerListener {
     fun onEndRunning(milliseconds: Long)
 }
 
-class DeafRunnerListener(): RunnerListener {
+class DeafRunnerListener : RunnerListener {
     override fun onStartRunning() {}
     override fun onEndRunning(milliseconds: Long) {}
 }
