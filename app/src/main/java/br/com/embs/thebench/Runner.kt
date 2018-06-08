@@ -1,6 +1,7 @@
 package br.com.embs.thebench
 
 import bilbo.randomforestensemble.BilboBenchmark
+import bilbo.randomforestensemble.DatasetPercentage
 import kotlinx.coroutines.experimental.launch
 import network.FlexNetBenchmark
 import kotlin.system.measureTimeMillis
@@ -13,24 +14,28 @@ sealed class Runner {
     abstract fun run()
 }
 
-class Algorithm1Runner(private val runnerListener: RunnerListener) : Runner() {
+class BilboRunner(private val runnerListener: RunnerListener,
+                  private val datasetPercentage: bilbo.randomforestensemble.DatasetPercentage) : Runner() {
+
     override fun run() {
         launch {
             runnerListener.onStartRunning()
             val time = measureTimeMillis {
-                BilboBenchmark(10).run()
+                BilboBenchmark(10, datasetPercentage).run()
             }
             runnerListener.onEndRunning(time)
         }
     }
 }
 
-class Algorithm2Runner(private val runnerListener: RunnerListener) : Runner() {
+class FlexNetRunner(private val runnerListener: RunnerListener,
+                    private val datasetPercentage: network.DatasetPercentage) : Runner() {
+
     override fun run() {
         launch {
             runnerListener.onStartRunning()
             val milliSeconds = measureTimeMillis {
-                FlexNetBenchmark(10).run()
+                FlexNetBenchmark(10, datasetPercentage).run()
             }
             runnerListener.onEndRunning(milliSeconds)
         }

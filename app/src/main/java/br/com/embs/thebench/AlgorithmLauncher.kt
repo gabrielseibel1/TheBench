@@ -15,16 +15,51 @@ class AlgorithmLauncher : AppCompatActivity() {
         setContentView(R.layout.activity_algorithm_launcher)
         setSupportActionBar(toolbar)
 
-        radioGroup.check(radioButtonAlgorithm1.id)
+        radioGroup.check(radioButtonBilbo100.id)
 
         fab.setOnClickListener {
-            val selectedAlgorithm = when (radioGroup.checkedRadioButtonId) {
-                radioButtonAlgorithm1.id -> Algorithm.ALGORITHM1
-                else -> Algorithm.ALGORITHM2
+
+            //select algorithm and dataset percentage
+            var selectedAlgorithm: Algorithm = Algorithm.BILBO
+            var datasetPercentage: DatasetPercentage = DatasetPercentage.PCT100
+
+            when (radioGroup.checkedRadioButtonId) {
+                radioButtonBilbo100.id -> {
+                    selectedAlgorithm = Algorithm.BILBO
+                    datasetPercentage = DatasetPercentage.PCT100
+                }
+                radioButtonBilbo75.id -> {
+                    selectedAlgorithm = Algorithm.BILBO
+                    datasetPercentage = DatasetPercentage.PCT75
+                }
+                radioButtonBilbo50.id -> {
+                    selectedAlgorithm = Algorithm.BILBO
+                    datasetPercentage = DatasetPercentage.PCT50
+                }
+                radioButtonBilbo25.id -> {
+                    selectedAlgorithm = Algorithm.BILBO
+                    datasetPercentage = DatasetPercentage.PCT25
+                }
+                radioButtonFlexNet100.id -> {
+                    selectedAlgorithm = Algorithm.FLEXNET
+                    datasetPercentage = DatasetPercentage.PCT100
+                }
+                radioButtonFlexNet75.id -> {
+                    selectedAlgorithm = Algorithm.FLEXNET
+                    datasetPercentage = DatasetPercentage.PCT75
+                }
+                radioButtonFlexNet50.id -> {
+                    selectedAlgorithm = Algorithm.FLEXNET
+                    datasetPercentage = DatasetPercentage.PCT50
+                }
+                radioButtonFlexNet25.id -> {
+                    selectedAlgorithm = Algorithm.FLEXNET
+                    datasetPercentage = DatasetPercentage.PCT25
+                }
             }
             //val runnerListener = ToasterRunnerListener(this, selectedAlgorithm)
             val runnerListener = DeafRunnerListener()
-            RunnerFactory().create(selectedAlgorithm, runnerListener).run()
+            RunnerFactory().create(selectedAlgorithm, datasetPercentage, runnerListener).run()
         }
     }
 

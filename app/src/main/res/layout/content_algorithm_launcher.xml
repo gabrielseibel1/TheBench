@@ -35,18 +35,60 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" >
 
         <RadioButton
-            android:id="@+id/radioButtonAlgorithm1"
+            android:id="@+id/radioButtonBilbo100"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/algorithm_1" />
+            android:text="@string/bilbo_100" />
 
         <RadioButton
-            android:id="@+id/radioButtonAlgorithm2"
+            android:id="@+id/radioButtonBilbo75"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/algorithm_2" />
+            android:text="@string/bilbo_75" />
+
+        <RadioButton
+            android:id="@+id/radioButtonBilbo50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/bilbo_50" />
+
+        <RadioButton
+            android:id="@+id/radioButtonBilbo25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/bilbo_25" />
+
+        <RadioButton
+            android:id="@+id/radioButtonFlexNet100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/flexnet_100" />
+
+        <RadioButton
+            android:id="@+id/radioButtonFlexNet75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/flexnet_75" />
+
+        <RadioButton
+            android:id="@+id/radioButtonFlexNet50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/flexnet_50" />
+
+        <RadioButton
+            android:id="@+id/radioButtonFlexNet25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/flexnet_25" />
     </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>
