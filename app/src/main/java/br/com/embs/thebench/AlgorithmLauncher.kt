@@ -57,8 +57,10 @@ class AlgorithmLauncher : AppCompatActivity() {
                     datasetPercentage = DatasetPercentage.PCT25
                 }
             }
-            val runnerListener = ToasterRunnerListener(this, selectedAlgorithm)
+            //val runnerListener = ToasterRunnerListener(this, selectedAlgorithm)
             //val runnerListener = DeafRunnerListener()
+            val runnerListener = ProgressBarRunnerListener(
+                    this, progressBar, listOf(radioGroup, textView))
             RunnerFactory().create(selectedAlgorithm, datasetPercentage, runnerListener).run()
         }
     }
