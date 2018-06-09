@@ -1,9 +1,6 @@
 package br.com.embs.thebench
 
-import android.content.Context
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
+import android.app.Activity
 import android.widget.Toast
 
 interface RunnerListener {
@@ -16,9 +13,11 @@ class DeafRunnerListener : RunnerListener {
     override fun onEndRunning(milliseconds: Long) {}
 }
 
-class ToasterRunnerListener(private val context: Context, private val algorithm: Algorithm) : RunnerListener {
-    override fun onStartRunning() = context.toast("Starting $algorithm")
-    override fun onEndRunning(milliseconds: Long) = context.toast("Finished $algorithm in $milliseconds ms")
+class ToasterRunnerListener(private val activity: Activity, private val algorithm: Algorithm) : RunnerListener {
+    override fun onStartRunning() = activity.toast("Starting $algorithm")
+    override fun onEndRunning(milliseconds: Long) = activity.toast("Finished $algorithm in $milliseconds ms")
 }
 
-fun Context.toast(message: CharSequence) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+fun Activity.toast(message: CharSequence) = this.runOnUiThread {
+    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+}
