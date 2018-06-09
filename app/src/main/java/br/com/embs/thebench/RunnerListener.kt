@@ -44,3 +44,29 @@ class ProgressBarRunnerListener(private val activity: Activity, private val prog
     }
 }
 
+class ProgressBarAndToastRunnerListener(private val activity: Activity,
+                                        private val progressBar: ProgressBar,
+                                        private val form: List<View>,
+                                        algorithm: Algorithm) : RunnerListener {
+
+    private val toasterRunnerListener = ToasterRunnerListener(activity, algorithm)
+
+    override fun onStartRunning() {
+        toasterRunnerListener.onStartRunning()
+        activity.runOnUiThread {
+            progressBar.apply {
+                visibility = View.VISIBLE
+                isIndeterminate = true
+            }
+            form.forEach { view -> view.visibility = View.GONE }
+        }
+    }
+    override fun onEndRunning(milliseconds: Long) {
+        activity.runOnUiThread {
+            progressBar.visibility = View.GONE
+            form.forEach { view -> view.visibility = View.VISIBLE }
+        }
+        toasterRunnerListener.onEndRunning(milliseconds)
+    }
+}
+

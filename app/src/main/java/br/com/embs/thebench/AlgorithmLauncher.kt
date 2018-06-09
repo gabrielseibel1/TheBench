@@ -59,8 +59,12 @@ class AlgorithmLauncher : AppCompatActivity() {
             }
             //val runnerListener = ToasterRunnerListener(this, selectedAlgorithm)
             //val runnerListener = DeafRunnerListener()
-            val runnerListener = ProgressBarRunnerListener(
-                    this, progressBar, listOf(radioGroup, textView, fab))
+            val runnerListener = ProgressBarAndToastRunnerListener(
+                    activity = this,
+                    progressBar = progressBar,
+                    form = listOf(radioGroup, textView, fab),
+                    algorithm = selectedAlgorithm
+            )
             RunnerFactory().create(selectedAlgorithm, datasetPercentage, runnerListener).run()
         }
     }
