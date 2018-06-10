@@ -60,7 +60,7 @@ class AlgorithmLauncher : AppCompatActivity() {
             val runnerListener = ProgressBarAndToastRunnerListener(
                     activity = this,
                     progressBar = progressBar,
-                    form = listOf(radioGroup, textView, fab),
+                    form = listOf(imageView, textView, radioGroup, fab),
                     algorithm = selectedAlgorithm
             )
             RunnerFactory().create(selectedAlgorithm, datasetPercentage, runnerListener).run()

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">The Bench</string>
     <string name="action_settings">Settings</string>
-    <string name="choose_an_algorithm_to_run">Choose an algorithm to run!</string>
+    <string name="choose_an_algorithm_to_run">Choose a benchmark to run!</string>
     <string name="bilbo_100">Bilbo – 100% of data</string>
     <string name="bilbo_75">Bilbo – 75% of data</string>
     <string name="bilbo_50">Bilbo – 50% of data</string>
@@ -10,4 +10,5 @@
     <string name="flexnet_75">FlexNet – 75% of data</string>
     <string name="flexnet_50">FlexNet – 50% of data</string>
     <string name="flexnet_25">FlexNet – 25% of data</string>
+    <string name="app_icon">App Icon</string>
 </resources>
