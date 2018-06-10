@@ -20,7 +20,9 @@ class ToasterRunnerListener(private val activity: Activity, private val algorith
     override fun onEndRunning(milliseconds: Long) = activity.toast("Finished $algorithm in $milliseconds ms")
 
     private fun Activity.toast(message: CharSequence) = this.runOnUiThread {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        kotlin.repeat(3, {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        })
     }
 }
 
