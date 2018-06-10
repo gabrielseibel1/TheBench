@@ -10,11 +10,6 @@ interface RunnerListener {
     fun onEndRunning(milliseconds: Long)
 }
 
-class DeafRunnerListener : RunnerListener {
-    override fun onStartRunning() {}
-    override fun onEndRunning(milliseconds: Long) {}
-}
-
 class ToasterRunnerListener(private val activity: Activity, private val algorithm: Algorithm) : RunnerListener {
     override fun onStartRunning() = activity.toast("Starting $algorithm")
     override fun onEndRunning(milliseconds: Long) = activity.toast("Finished $algorithm in $milliseconds ms")
@@ -23,26 +18,6 @@ class ToasterRunnerListener(private val activity: Activity, private val algorith
         kotlin.repeat(3, {
             Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         })
-    }
-}
-
-class ProgressBarRunnerListener(private val activity: Activity, private val progressBar: ProgressBar,
-                                private val form: List<View>) : RunnerListener {
-
-    override fun onStartRunning() {
-        activity.runOnUiThread {
-            progressBar.apply {
-                visibility = View.VISIBLE
-                isIndeterminate = true
-            }
-            form.forEach { view -> view.visibility = View.GONE }
-        }
-    }
-    override fun onEndRunning(milliseconds: Long) {
-        activity.runOnUiThread {
-            progressBar.visibility = View.GONE
-            form.forEach { view -> view.visibility = View.VISIBLE }
-        }
     }
 }
 
